@@ -34,9 +34,11 @@ DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://jonnywakker37:skqfQh1bIpA
 JOIN_REQS_DB = environ.get("JOIN_REQS_DB", DB_URI)
 DB_NAME = os.environ.get("DATABASE_NAME", "jonny")
 
-#force sub channel id, if you want enable force sub
+# force sub channel id, if you want enable force sub
 FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002966579018"))
-FORCE_SUB_CHANNEL2 = int(os.environ.get("FORCE_SUB_CHANNEL2", "-1003003511642"))
+force_sub_channel2_env = os.environ.get("FORCE_SUB_CHANNEL2", "")
+# Set FORCE_SUB_CHANNEL2=0 to temporarily disable it
+FORCE_SUB_CHANNEL2 = int(force_sub_channel2_env) if force_sub_channel2_env not in ("", "0") else None
 
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
